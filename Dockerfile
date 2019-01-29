@@ -74,6 +74,9 @@ RUN pip3 install --pre \
     pyyaml
 
 RUN suricata-update
+
+VOLUME /var/log/suricata
+
 RUN touch /etc/suricata/thresholds.config
 COPY suricata.yaml /etc/suricata/suricata.yaml
 
