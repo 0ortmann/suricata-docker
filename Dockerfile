@@ -80,5 +80,8 @@ VOLUME /var/log/suricata
 RUN touch /etc/suricata/thresholds.config
 COPY suricata.yaml /etc/suricata/suricata.yaml
 
-# CMD suricata -r /pcap -l /results
-CMD suricata -i enp0s31f6
+WORKDIR /opt/suricata
+COPY entrypoint.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
